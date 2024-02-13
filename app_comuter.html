@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost per Kilometer Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            /* Adjust styling for larger screens */
+            body {
+                max-width: 600px;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cost per Kilometer Comparison</h1>
+
+    <div>
+        <label for="petrolCost">Petrol cost per liter:</label>
+        <input type="number" id="petrolCost" placeholder="Enter petrol cost per liter">
+
+        <label for="dailyDistance">Daily distance traveled (in km):</label>
+        <input type="number" id="dailyDistance" placeholder="Enter daily distance">
+        
+        <label for="vehicleConsumption">Vehicle consumption per km (in liters):</label>
+        <input type="number" id="vehicleConsumption" placeholder="Enter vehicle consumption per km">
+    </div>
+
+    <button onclick="compareCostPerKm()">Compare Cost per Kilometer</button>
+
+    <div id="result"></div>
+
+    <script>
+        function compareCostPerKm() {
+            var petrolCost = document.getElementById("petrolCost").value;
+            var dailyDistance = document.getElementById("dailyDistance").value;
+            var vehicleConsumption = document.getElementById("vehicleConsumption").value;
+
+            // Assuming average consumption rates per km for electric
+            var electricConsumptionRate = 0.15; // kWh per km (adjust as needed)
+            var electricCostPerKWh = 8; // cost per kWh (adjust as needed)
+	    var co2 = 0.08277;
+
+            var petrolExpense = petrolCost / vehicleConsumption * dailyDistance;
+            var electricExpense = electricConsumptionRate * dailyDistance;
+		var emission = co2 * dailyDistance;
+            var result = document.getElementById("result");
+            result.innerHTML = "<h2>Expense Comparison</h2>" +
+                               "<p>Petrol Expense: ₹" + petrolExpense.toFixed(2) + " per trip</p>" +
+                               "<p>Electric Expense (₹0.15 per km as per Internet): ₹" + electricExpense.toFixed(2) + " per trip</p>" + "</p>";
+ 				"<p>Carbon emmision of your vehicle per trip is: " + emission + "</p>";
+                              "<p>Conclusion: " + (petrolExpense < electricExpense ? "Petrol is cheaper." : "Electric is assumed to be cheaper.") //
+        }
+    </script>
+
+</body>
+</html>
