@@ -6,7 +6,7 @@ parameters:
   type: string
   default: ''
   displayName: 'Input Date'
-
+  
 
 stages:
 - stage: Build
@@ -20,3 +20,8 @@ stages:
     - script: |
         echo "Input date is: $(inputDate)"
       displayName: 'Echo input date'
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Artifact'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'output'
