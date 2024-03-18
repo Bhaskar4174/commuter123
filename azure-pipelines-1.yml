@@ -18,8 +18,7 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - script: |
-        echo "Input date is: $(inputDate)"
-      displayName: 'Echo input date'
+       
     - task: PublishPipelineArtifact@1
       displayName: 'Publish Artifact'
       inputs:
