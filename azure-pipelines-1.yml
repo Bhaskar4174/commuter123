@@ -4,8 +4,8 @@ trigger:
 parameters:
 - name: inputDate
   type: string
-  default: 'date'
-  displayName: ''
+  default: ''
+  displayName: 'Input Date'
   
 
 stages:
