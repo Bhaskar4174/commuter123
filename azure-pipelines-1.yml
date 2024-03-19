@@ -5,7 +5,7 @@ parameters:
 - name: inputDate
   type: string
   default: 'date'
-  displayName: 'Input Date'
+  displayName: ''
   
 
 stages:
